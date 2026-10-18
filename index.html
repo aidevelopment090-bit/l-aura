@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'AURA | Haute Luxury Accessories & Fine Accents</title>
+    <meta name="description" content="Discover handcrafted 18k gold vermeil jewelry, Swiss-engineered timepieces, and Italian calfskin leather accessories.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <aside class="announcement-bar">
+        <div class="container announcement-content">
+            <div class="announcement-text">
+                <i class="fa-solid fa-sparkles text-gold"></i>
+                <span>Complimentary Signature Gift Packaging & Insured Worldwide Courier</span>
+            </div>
+            <div class="announcement-tools">
+                <select id="currency-select" class="currency-select" aria-label="Select Currency">
+                    <option value="USD">USD ($)</option>
+                    <option value="PKR">PKR (₨)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="GBP">GBP (£)</option>
+                    <option value="AED">AED (د.إ)</option>
+                </select>
+                <a href="admin.html" class="admin-link-pill">
+                    <i class="fa-solid fa-lock" style="font-size: 0.65rem;"></i>
+                    <span>Admin Panel</span>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- LIVE SUPABASE DATABASE STATUS BAR -->
+    <div class="supabase-indicator-bar">
+        <div class="container supabase-indicator-content">
+            <div class="status-tag">
+                <span id="supabase-status-dot" class="status-dot"></span>
+                <span id="supabase-status-text">Connecting to Supabase...</span>
+            </div>
+            <a href="admin.html#database" style="color: var(--text-muted); font-size: 0.75rem; text-decoration: none;">
+                <i class="fa-solid fa-database"></i> Database Setup & SQL
+            </a>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION HEADER -->
+    <header class="site-header">
+        <div class="container header-container">
+            <!-- Brand Logo -->
+            <a href="index.html" class="brand-monogram">
+                <span class="brand-logo-text">L'AURA</span>
+                <span class="brand-subtext">Haute Accessories • Paris & Dubai</span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#catalog" class="nav-link active">Collections</a></li>
+                    <li><a href="#categories" class="nav-link">Categories</a></li>
+                    <li><a href="#story" class="nav-link">Maison Story</a></li>
+                    <li><a href="#testimonials" class="nav-link">Client Reviews</a></li>
+                    <li><a href="admin.html" class="nav-link"><i class="fa-solid fa-sliders"></i> Admin</a></li>
+                </ul>
+            </nav>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <!-- Wishlist Toggle -->
+                <button id="wishlist-open-btn" class="action-btn" title="Saved Pieces" aria-label="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="badge-count wishlist-count">0</span>
+                </button>
+
+                <!-- Cart Toggle -->
+                <button id="cart-open-btn" class="action-btn" title="Shopping Bag" aria-label="Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="badge-count cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-tag">Signature Autumn / Winter 2026</span>
+                <h1 class="hero-title">Elegance Defined In Every <em>Gilded</em> Detail.</h1>
+                <p class="hero-desc">
+                    A curated capsule of handcrafted 18k gold vermeil jewelry, Swiss-calibrated timepieces, and Italian full-grain leather bags crafted for quiet confidence.
+                </p>
+                <div class="hero-btns">
+                    <a href="#catalog" class="btn btn-primary">
+                        <i class="fa-solid fa-sparkles"></i> Explore Collection
+                    </a>
+                    <a href="#categories" class="btn btn-outline-light">
+                        Browse Categories
+                    </a>
+                </div>
+                <div class="hero-badges">
+                    <div class="hero-badge-item">
+                        <strong>100%</strong>
+                        <span>Certified Precious Metals</span>
+                    </div>
+                    <div class="hero-badge-item">
+                        <strong>4.9 ★</strong>
+                        <span>Rated By 14,000+ Patrons</span>
+                    </div>
+                    <div class="hero-badge-item">
+                        <strong>Free</strong>
+                        <span>Insured Express Courier</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORIES SHOWCASE -->
+    <section id="categories" class="categories-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Curated Departments</span>
+                <h2 class="section-title">The Quintessential Accessories</h2>
+                <p class="section-desc">Each category has been thoughtfully designed to complement your contemporary wardrobe.</p>
+            </div>
+
+            <div class="categories-grid">
+                <!-- Jewelry -->
+                <a href="#catalog" class="category-card" onclick="setCategoryFilter('Jewelry')">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80" alt="Fine Jewelry">
+                    <div class="category-overlay">
+                        <h3>Fine Jewelry</h3>
+                        <span>Shop Necklaces & Earrings <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- Watches -->
+                <a href="#catalog" class="category-card" onclick="setCategoryFilter('Watches')">
+                    <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=700&q=80" alt="Timepieces">
+                    <div class="category-overlay">
+                        <h3>Timepieces</h3>
+                        <span>Precision Chronographs <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- Bags -->
+                <a href="#catalog" class="category-card" onclick="setCategoryFilter('Bags')">
+                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=80" alt="Leather Bags">
+                    <div class="category-overlay">
+                        <h3>Designer Bags</h3>
+                        <span>Italian Quilted Calfskin <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- Sunglasses & Accents -->
+                <a href="#catalog" class="category-card" onclick="setCategoryFilter('Sunglasses')">
+                    <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80" alt="Eyewear & Accents">
+                    <div class="category-overlay">
+                        <h3>Eyewear & Accents</h3>
+                        <span>Polarized Acetates <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT CATALOG SECTION -->
+    <section id="catalog" class="catalog-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Maison Catalog</span>
+                <h2 class="section-title">The Complete Collection</h2>
+                <p class="section-desc">Connected directly to Supabase with real-time stock sync and admin controls.</p>
+            </div>
+
+            <!-- Filter & Search Controls -->
+            <div class="catalog-controls">
+                <div class="filter-pills">
+                    <button class="filter-btn active" data-category="All">All Pieces</button>
+                    <button class="filter-btn" data-category="Jewelry">Jewelry</button>
+                    <button class="filter-btn" data-category="Watches">Timepieces</button>
+                    <button class="filter-btn" data-category="Bags">Bags</button>
+                    <button class="filter-btn" data-category="Sunglasses">Eyewear</button>
+                    <button class="filter-btn" data-category="Rings & Accents">Rings & Accents</button>
+                </div>
+
+                <div class="catalog-search-sort">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="search-input" placeholder="Search piece or stone...">
+                    </div>
+
+                    <select id="sort-select" class="sort-select" aria-label="Sort Catalog">
+                        <option value="featured">Featured First</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="rating">Highest Rated</option>
+                        <option value="newest">Newest Arrivals</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Dynamic Product Grid -->
+            <div id="products-grid" class="products-grid">
+                <!-- Injected via JavaScript from Supabase -->
+            </div>
+        </div>
+    </section>
+
+    <!-- BRAND STORY / EDITORIAL SECTION -->
+    <section id="story" class="story-section">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-visual-wrap">
+                    <img class="story-main-img" src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1000&q=80" alt="Artisanal Jewelry Workshop">
+                    <div class="story-floating-card">
+                        <h4>Atelier Geneva</h4>
+                        <p>Every bezel, link, and stitch is manually audited by master craftsmen with over 20 years of guild heritage.</p>
+                    </div>
+                </div>
+
+                <div class="story-content">
+                    <span class="section-subtitle">Our Heritage</span>
+                    <h2>The Philosophy of Quiet Distinction.</h2>
+                    <p>
+                        At L'AURA, we believe authentic luxury is quiet, tactile, and enduring. We forgo loud monograms in favor of sublime materials: 18-karat thick gold vermeil over 925 sterling silver, ethical lab-grown stones, and vegetable-tanned Tuscan leathers.
+                    </p>
+
+                    <div class="story-features">
+                        <div class="story-feat-item">
+                            <h5>Zero Compromise</h5>
+                            <span>Hypoallergenic, nickel-free, and tarnish-resistant formulas.</span>
+                        </div>
+                        <div class="story-feat-item">
+                            <h5>Ethical Supply</h5>
+                            <span>Traceable precious stones and sustainably sourced leathers.</span>
+                        </div>
+                        <div class="story-feat-item">
+                            <h5>Heirloom Longevity</h5>
+                            <span>Crafted to withstand decades of graceful, everyday wear.</span>
+                        </div>
+                        <div class="story-feat-item">
+                            <h5>Bespoke Boxing</h5>
+                            <span>Every piece arrives in a plush velvet keepsake jewelry case.</span>
+                        </div>
+                    </div>
+
+                    <a href="#catalog" class="btn btn-primary">Discover The Pieces</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Verified Patrons</span>
+                <h2 class="section-title">Words From Our Collectors</h2>
+                <p class="section-desc">Read why discerning clients choose L'AURA for milestones and everyday refinement.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="test-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="test-quote">
+                        "The Aurelia Gold Vermeil necklace is breathtaking. The weight feels substantial yet so gentle on the neckline. The packaging alone felt like opening a piece of high French couture."
+                    </p>
+                    <div class="test-author">
+                        <img class="test-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Elena Rostova">
+                        <div class="test-info">
+                            <h5>Elena Rostova</h5>
+                            <span>Verified Buyer • Dubai, UAE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="test-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="test-quote">
+                        "I purchased the Chronos Minimalist watch for my husband and the Monaco handbag for myself. The Italian leather is buttery soft and the finish on the watch matches my Rolex in elegance."
+                    </p>
+                    <div class="test-author">
+                        <img class="test-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Sophia Al-Mansoor">
+                        <div class="test-info">
+                            <h5>Sophia Al-Mansoor</h5>
+                            <span>Verified Buyer • London, UK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="test-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="test-quote">
+                        "The Riviera polarized sunglasses exceeded all my expectations. Crystal clarity and the tortoiseshell acetate has that unmistakable artisanal depth. 10/10 purchase!"
+                    </p>
+                    <div class="test-author">
+                        <img class="test-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Marcello De Luca">
+                        <div class="test-info">
+                            <h5>Marcello De Luca</h5>
+                            <span>Verified Buyer • Milan, Italy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIP NEWSLETTER -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <span class="section-subtitle">Private Society</span>
+                <h2>Join The L'AURA Privé Circle</h2>
+                <p>Receive private previews of limited edition drops, invitations to regional salons, and 15% privilege on your first acquisition.</p>
+                
+                <form id="newsletter-form" class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your preferred email address..." required>
+                    <button type="submit" class="btn btn-primary" style="padding: 14px 26px;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>L'AURA</h3>
+                    <p>Haute accessories, fine vermeil jewelry, and artisanal timepieces crafted for the discerning connoisseur.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-btn" title="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+                        <a href="#" class="social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Collections</h4>
+                    <ul class="footer-links">
+                        <li><a href="#catalog">Fine Jewelry</a></li>
+                        <li><a href="#catalog">Timepieces</a></li>
+                        <li><a href="#catalog">Leather Handbags</a></li>
+                        <li><a href="#catalog">Polarized Eyewear</a></li>
+                        <li><a href="#catalog">Silk & Accents</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Client Care</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Complimentary Shipping</a></li>
+                        <li><a href="#">Size & Fit Guide</a></li>
+                        <li><a href="#">Care Instructions</a></li>
+                        <li><a href="#">Authenticity Certificate</a></li>
+                        <li><a href="admin.html"><i class="fa-solid fa-lock text-gold"></i> Admin Management</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Maison Flagships</h4>
+                    <p style="font-size: 0.85rem; line-height: 1.6; margin-bottom: 12px;">
+                        <strong>Paris:</strong> 18 Place Vendôme, 75001 Paris<br>
+                        <strong>Dubai:</strong> Fashion Avenue, The Dubai Mall<br>
+                        <strong>Email:</strong> concierge@laura-accessories.com
+                    </p>
+                    <div class="payment-icons">
+                        <i class="fa-brands fa-cc-visa"></i>
+                        <i class="fa-brands fa-cc-mastercard"></i>
+                        <i class="fa-brands fa-cc-amex"></i>
+                        <i class="fa-brands fa-apple-pay"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 L'AURA Haute Accessories. All Rights Reserved. Powered by Supabase Backend.</p>
+                <div style="display: flex; gap: 20px;">
+                    <a href="#" style="color: #666; text-decoration: none;">Privacy Protocol</a>
+                    <a href="#" style="color: #666; text-decoration: none;">Terms of Purchase</a>
+                    <a href="admin.html" style="color: var(--gold); text-decoration: none;"><i class="fa-solid fa-shield-halved"></i> Admin Portal</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= SLIDE-OUT CART DRAWER ================= -->
+    <div id="drawer-backdrop" class="drawer-backdrop"></div>
+    <div id="cart-drawer" class="cart-drawer">
+        <div class="drawer-header">
+            <h3><i class="fa-solid fa-bag-shopping text-gold"></i> Your Shopping Bag (<span class="cart-count">0</span>)</h3>
+            <button id="cart-close-btn" class="close-drawer-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div class="drawer-body">
+            <div id="cart-items-list" class="cart-items-list">
+                <!-- Cart items rendered by JavaScript -->
+            </div>
+        </div>
+
+        <div class="drawer-footer">
+            <div class="cart-summary-row">
+                <span>Estimated Subtotal</span>
+                <strong id="cart-subtotal">$0.00</strong>
+            </div>
+            <div class="cart-summary-row">
+                <span>Insured Courier Delivery</span>
+                <span style="color: #10B981; font-weight: 600;">Complimentary</span>
+            </div>
+            <div class="cart-summary-row total-row">
+                <span>Total Due</span>
+                <strong id="cart-total" class="text-gold">$0.00</strong>
+            </div>
+
+            <button id="checkout-open-btn" class="btn btn-primary checkout-btn">
+                <i class="fa-solid fa-lock"></i> Proceed To Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- ================= WISHLIST DRAWER ================= -->
+    <div id="wishlist-drawer" class="cart-drawer">
+        <div class="drawer-header">
+            <h3><i class="fa-regular fa-heart text-gold"></i> Saved Treasures (<span class="wishlist-count">0</span>)</h3>
+            <button id="wishlist-close-btn" class="close-drawer-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="drawer-body">
+            <div id="wishlist-items-list" class="cart-items-list">
+                <!-- Wishlist items rendered by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= QUICK VIEW MODAL ================= -->
+    <div id="quick-view-modal" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <div id="quick-view-content">
+                <!-- Loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= CHECKOUT MODAL ================= -->
+    <div id="checkout-modal" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="checkout-modal-content">
+                <span class="section-subtitle">Secure Acquisition</span>
+                <h2 class="checkout-modal-title">Complete Your Order</h2>
+                <p class="checkout-modal-sub">Please provide your delivery details. Your order will sync directly with our Supabase dispatch system.</p>
+
+                <div class="checkout-grid">
+                    <!-- Form -->
+                    <form id="checkout-form" class="checkout-form">
+                        <div class="form-group">
+                            <label for="cust-name">Full Name *</label>
+                            <input type="text" id="cust-name" class="form-control" required placeholder="e.g. Sarah Jenkins">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cust-email">Email Address *</label>
+                                <input type="email" id="cust-email" class="form-control" required placeholder="sarah@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="cust-phone">Phone / WhatsApp *</label>
+                                <input type="tel" id="cust-phone" class="form-control" required placeholder="+1 555-0199 or +92 300...">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cust-address">Delivery Address *</label>
+                            <input type="text" id="cust-address" class="form-control" required placeholder="House/Flat number, Street name">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cust-city">City / State *</label>
+                                <input type="text" id="cust-city" class="form-control" required placeholder="e.g. New York, Karachi, Dubai">
+                            </div>
+                            <div class="form-group">
+                                <label for="cust-payment">Payment Method *</label>
+                                <select id="cust-payment" class="form-control">
+                                    <option value="Cash on Delivery">Cash on Delivery (COD)</option>
+                                    <option value="Card on Delivery">Card on Delivery (POS)</option>
+                                    <option value="Direct Bank Wire">Direct Bank Transfer</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cust-notes">Delivery / Gift Notes (Optional)</label>
+                            <input type="text" id="cust-notes" class="form-control" placeholder="Special courier instructions or gift message">
+                        </div>
+
+                        <button type="submit" id="place-order-btn" class="btn btn-primary" style="margin-top: 10px;">
+                            <i class="fa-solid fa-lock"></i> Place Secure Order
+                        </button>
+                    </form>
+
+                    <!-- Summary -->
+                    <div class="checkout-order-summary">
+                        <h4 class="summary-heading">Acquisition Summary</h4>
+                        <div id="checkout-summary-list" class="summary-items-list">
+                            <!-- Items list -->
+                        </div>
+                        <div class="cart-summary-row" style="margin-top: 12px;">
+                            <span>Insured Packaging:</span>
+                            <strong style="color: #10B981;">FREE</strong>
+                        </div>
+                        <div class="cart-summary-row total-row">
+                            <span>Grand Total:</span>
+                            <strong id="checkout-summary-total" class="text-gold">$0.00</strong>
+                        </div>
+                        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 16px; line-height: 1.5;">
+                            <i class="fa-solid fa-shield-halved text-gold"></i> 256-bit SSL encrypted. 30-day effortless returns and full authenticity certificate enclosed.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATIONS -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- SCRIPTS -->
+    <!-- Supabase JS CDN (Official v2) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Supabase Configuration & Data Layer -->
+    <script src="js/supabase-config.js"></script>
+    <!-- Storefront Controller -->
+    <script src="js/store.js"></script>
+
+    <!-- Inline Category Filter Trigger Helper -->
+    <script>
+        function setCategoryFilter(category) {
+            const btn = document.querySelector(`.filter-btn[data-category="${category}"]`);
+            if (btn) btn.click();
+        }
+    </script>
+</body>
+</html>
